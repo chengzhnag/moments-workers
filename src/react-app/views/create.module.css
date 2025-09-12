@@ -1,0 +1,199 @@
+/* 新建页面容器 */
+.createContainer {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 内容区域 */
+.content {
+  flex: 1;
+  padding: 16px;
+  background-color: #fff;
+  margin: 8px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 表单样式 */
+.form {
+  width: 100%;
+}
+
+/* 用户信息区域 */
+.userInfo {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 12px;
+  border: 2px solid #e8e8e8;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.userDetails {
+  flex: 1;
+}
+
+.userName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.userRole {
+  font-size: 12px;
+  color: #666;
+  background-color: #f0f0f0;
+  padding: 2px 8px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+/* 内容输入区域 */
+.contentInput {
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.contentInput :global(.adm-text-area) {
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 0;
+  min-height: 120px;
+}
+
+.contentInput :global(.adm-text-area-count) {
+  color: #999;
+  font-size: 12px;
+  text-align: right;
+  margin-top: 8px;
+}
+
+/* 图片上传区域 */
+.imageSection {
+  padding: 0;
+}
+
+.imageUploader {
+  width: 100%;
+}
+
+.imageUploader :global(.adm-image-uploader) {
+  --cell-size: 80px;
+  --gap: 8px;
+}
+
+.imageUploader :global(.adm-image-uploader-cell) {
+  border-radius: 8px;
+  border: 2px dashed #d9d9d9;
+  background-color: #fafafa;
+}
+
+.imageUploader :global(.adm-image-uploader-cell:hover) {
+  border-color: #1890ff;
+  background-color: #f0f8ff;
+}
+
+.imageUploader :global(.adm-image-uploader-cell-image) {
+  border-radius: 6px;
+}
+
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+  .content {
+    margin: 4px;
+    padding: 12px;
+  }
+}
+
+/* 动画效果 */
+.createContainer {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 加载状态 */
+.createContainer :global(.adm-loading) {
+  color: #1890ff;
+}
+
+/* 成功状态 */
+.createContainer :global(.adm-toast-success) {
+  background-color: #52c41a;
+  color: #fff;
+}
+
+/* 错误状态 */
+.createContainer :global(.adm-toast-fail) {
+  background-color: #ff4d4f;
+  color: #fff;
+}
+
+/* 导航栏样式调整 */
+.createContainer :global(.adm-nav-bar) {
+  background-color: #fff;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.createContainer :global(.adm-nav-bar-title) {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.createContainer :global(.adm-nav-bar-back-arrow) {
+  font-size: 20px;
+  color: #333;
+}
+
+/* 按钮样式调整 */
+.createContainer :global(.adm-button-primary) {
+  background-color: #1890ff;
+  border-color: #1890ff;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.createContainer :global(.adm-button-primary:disabled) {
+  background-color: #d9d9d9;
+  border-color: #d9d9d9;
+  color: #999;
+}
+
+/* 弹窗样式调整 */
+.createContainer :global(.adm-popup) {
+  border-radius: 12px 12px 0 0;
+}
+
+.createContainer :global(.adm-popup-body) {
+  border-radius: 12px 12px 0 0;
+} 

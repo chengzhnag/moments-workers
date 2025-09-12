@@ -1,0 +1,90 @@
+/* 移动端项目初始化 CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 清除移动端点击高亮 */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 设置全局字体和文本样式 */
+body,
+button,
+input,
+select,
+textarea {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* 禁用长按链接和图片的菜单 */
+a,
+img {
+  -webkit-touch-callout: none;
+}
+
+/* 禁用双击缩放 */
+a {
+  touch-action: manipulation;
+}
+
+/* 图片自适应 */
+img {
+  max-width: 100%;
+  height: auto;
+  border: 0;
+}
+
+/* 表单元素默认样式重置 */
+button,
+input,
+select,
+textarea {
+  outline: none;
+  border: none;
+  background: none;
+  font-size: inherit;
+}
+
+/* 重置列表样式 */
+ul, ol {
+  list-style: none;
+}
+
+/* 隐藏水平滚动条 */
+body {
+  overflow-x: hidden;
+}
+
+/* 设置视口 100vh 兼容性（防止 Safari 地址栏影响） */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* 隐藏滚动条（可选） */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* 移动端点击穿透问题（可配合 JS 使用） */
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 避免字体缩放 */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}

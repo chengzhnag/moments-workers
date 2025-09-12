@@ -1,0 +1,204 @@
+.createAccountContainer {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.navBar {
+  background: transparent;
+  color: white;
+  --adm-color-text: white;
+}
+
+.backgroundDecoration1 {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.backgroundDecoration2 {
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.createAccountCard {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px 40px;
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.cardContent {
+  padding: 32px 0px;
+}
+
+.logoSection {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logoIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: white;
+  font-size: 36px;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 8px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.formLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.eyeIcon {
+  color: #999;
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s;
+  padding: 4px;
+}
+
+.eyeIcon:hover {
+  color: #667eea;
+}
+
+.eyeIcon.visible {
+  color: #667eea;
+}
+
+.createButton {
+  height: 48px;
+  border-radius: 24px;
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s;
+}
+
+.createButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.createButton:active {
+  transform: translateY(0);
+}
+
+.bottomNote {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.noteText {
+  font-size: 12px;
+  color: #666;
+  margin: 4px 0;
+  line-height: 1.4;
+}
+
+
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+  .createAccountCard {
+    padding: 16px 12px 32px;
+  }
+  
+  .cardContent {
+    padding: 24px 20px;
+  }
+  
+  .logoIcon {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+  }
+  
+  .title {
+    font-size: 24px;
+  }
+  
+  .subtitle {
+    font-size: 13px;
+  }
+}
+
+/* 动画效果 */
+.card {
+  animation: slideInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
