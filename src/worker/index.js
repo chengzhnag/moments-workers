@@ -212,8 +212,8 @@ async function authenticateNormal(c) {
   }
 }
 
-// /api/auth
-app.post('/api/auth', async (c) => {
+// /api/auth - 验证用户身份
+app.get('/api/auth', async (c) => {
   const authHeader = c.req.header('Authorization');
   if (!authHeader || !authHeader.startsWith('Basic ')) {
     return createResponse(c, { error: '未授权', message: '缺少或无效的 Authorization 认证信息' }, 401);
