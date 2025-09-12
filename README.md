@@ -1,30 +1,30 @@
 
 # moments-workers
 
-基於 Cloudflare Workers + Hono + React 的全棧開箱即用項目，用於記錄和分享美好瞬間 ✨
+基于 Cloudflare Workers + Hono + React 的全栈开箱即用项目，用于记录和分享美好瞬间 ✨
 
-## 功能特點
+## 功能特点
 
-- 📝 支持用戶註冊、登入、權限管理（管理員/普通用戶）
-- 📸 圖片/文件上傳，文件存儲於 Cloudflare KV，支持 Telegram 雲端備份
-- 🗂️ 記錄（posts）增刪改查，支持分頁
-- 🔒 RESTful API，基於 Basic Auth 驗證
-- ⚡ 前後端分離，前端基於 React + antd-mobile，後端基於 Hono 框架
-- 🌍 跨域支持，適合多端部署
-- 🛠️ 支持 Cloudflare D1 數據庫
+- 📝 支持用户注册、登录、权限管理（管理员/普通用户）
+- 📸 图片/文件上传，文件存储于 Cloudflare KV，支持 Telegram 云端备份
+- 🗂️ 记录（posts）增删改查，支持分页
+- 🔒 RESTful API，基于 Basic Auth 验证
+- ⚡ 前后端分离，前端基于 React + antd-mobile，后端基于 Hono 框架
+- 🌍 跨域支持，适合多端部署
+- 🛠️ 支持 Cloudflare D1 数据库
 
-## 技術棧
+## 技术栈
 
 - Cloudflare Workers
 - Hono (API 路由)
 - React 18 / antd-mobile
 - Cloudflare KV / D1 Database
-- Vite 構建
-- Telegram Bot API（文件備份）
+- Vite 构建
+- Telegram Bot API（文件备份）
 
-## 快速開始
+## 快速开始
 
-### 1. 克隆並安裝依賴
+### 1. 克隆并安装依赖
 
 ```bash
 git clone https://github.com/chengzhnag/moments-workers.git
@@ -32,65 +32,64 @@ cd moments-workers
 npm install
 ```
 
-### 2. 配置環境
+### 2. 配置环境
 
-- 修改 `wrangler.json`，設置你的 Cloudflare 賬號、KV、D1、Telegram Bot Token 等。
-- 主要環境變量：
+- 修改 `wrangler.json`，设置你的 Cloudflare 账号、KV、D1、Telegram Bot Token 等。
+- 主要环境变量：
 	- `TG_BOT_TOKEN`：Telegram Bot Token
-	- `TG_CHAT_ID`：Telegram 群組/用戶ID
+	- `TG_CHAT_ID`：Telegram 群组/用户ID
 	- `DOMAIN`：你的域名
-	- `DB`：Cloudflare D1 數據庫綁定
-	- `IMAGE`：Cloudflare KV 綁定
+	- `DB`：Cloudflare D1 数据库绑定
+	- `IMAGE`：Cloudflare KV 绑定
 
-### 3. 本地開發
+### 3. 本地开发
 
 ```bash
 npm run dev
 ```
 
-- 前端訪問：http://localhost:5173
-- Worker API 本地訪問：http://localhost:8787/api/...
+- 前端访问：http://localhost:5173
+- Worker API 本地访问：http://localhost:8787/api/...
 
-### 4. 構建與部署
+### 4. 构建与部署
 
 ```bash
 npm run build
 npx wrangler deploy
 ```
 
-## API 說明
+## API 说明
 
-### 用戶相關
+### 用户相关
 
-- `POST /api/auth` 用戶登錄（Basic Auth）
-- `GET /api/users` 用戶列表（管理員）
-- `POST /api/users` 新增用戶（管理員）
-- `PUT /api/users/:id` 更新用戶（管理員）
-- `DELETE /api/users/:id` 刪除用戶（管理員）
+- `POST /api/auth` 用户登录（Basic Auth）
+- `GET /api/users` 用户列表（管理员）
+- `POST /api/users` 新增用户（管理员）
+- `PUT /api/users/:id` 更新用户（管理员）
+- `DELETE /api/users/:id` 删除用户（管理员）
 
-### 記錄（posts）
+### 记录（posts）
 
-- `GET /api/records` 查詢記錄
-- `POST /api/records` 新增記錄（管理員）
-- `PUT /api/records/:id` 更新記錄（普通用戶）
-- `DELETE /api/records/:id` 刪除記錄（管理員）
+- `GET /api/records` 查询记录
+- `POST /api/records` 新增记录（管理员）
+- `PUT /api/records/:id` 更新记录（普通用户）
+- `DELETE /api/records/:id` 删除记录（管理员）
 
-### 文件上傳
+### 文件上传
 
-- `POST /api/upload-file` 上傳文件（支持圖片/視頻/音頻）
-- `GET /api/file/:key` 下載文件
-- `GET /api/file-info/:key` 查詢文件信息
+- `POST /api/upload-file` 上传文件（支持图片/视频/音频）
+- `GET /api/file/:key` 下载文件
+- `GET /api/file-info/:key` 查询文件信息
 
 ## 前端入口
 
-- 代碼位於 `src/react-app/`
-- 路由、認證、API 請求已封裝，支持移動端體驗
+- 代码位于 `src/react-app/`
+- 路由、认证、API 请求已封装，支持移动端体验
 
 ## 其他
 
-- 請確保 Cloudflare 賬號已開通 D1 和 KV 服務
-- 所有 API 錯誤提示均為中文
+- 请确保 Cloudflare 账号已开通 D1 和 KV 服务
 
 ---
 
-如需更詳細的接口參數、數據結構或二次開發指引，請參考源碼或聯繫作者。
+如需更详细的接口参数、数据结构或二次开发指引，请参考源码或联系作者。

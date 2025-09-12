@@ -7,9 +7,9 @@
     "nodejs_compat"
   ],
   "vars": {
-    "TG_BOT_TOKEN": "",
-    "TG_CHAT_ID": "",
-    "DOMAIN": "https://m.952737.xyz"
+    "TG_BOT_TOKEN": "****",
+    "TG_CHAT_ID": "****",
+    "DOMAIN": "****"
   },
   "kv_namespaces": [
     {
@@ -20,7 +20,7 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "chengzhnag",
+      "database_name": "****",
       "database_id": "****"
     }
   ],
