@@ -1,7 +1,6 @@
-
 # moments-workers
 
-基于 Cloudflare Workers + Hono + React 的全栈开箱即用项目，用于记录和分享美好瞬间 ✨
+基于 Cloudflare Workers + Hono + React 的全栈开箱即用项目，**完全免费**，用于记录和分享美好瞬间 ✨
 
 ## 功能特点
 
@@ -22,74 +21,114 @@
 - Vite 构建
 - Telegram Bot API（文件备份）
 
-## 快速开始
+## 项目预览
 
-### 1. 克隆并安装依赖
+<table>   <tr>     <td><img src="https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/1000056292.mfksz4o4.png" alt="示例1" width="200"/></td>     <td><img src="https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/1000056296.13m4vouyl1.png" alt="示例2" width="200"/></td>     <td><img src="https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/1000056300.491mumpdjp.png" alt="示例3" width="200"/></td>     <td><img src="https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/1000056303.9rjrau4lvx.png" alt="示例4" width="200"/></td> <td><img src="https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/1000056298.1sfefpihmg.png" alt="示例5" width="200"/></td>  </tr> </table>
 
-```bash
-git clone https://github.com/chengzhnag/moments-workers.git
-cd moments-workers
-npm install
-```
+## 部署步骤
 
-### 2. 配置环境
-
-- 修改 `wrangler.json`，设置你的 Cloudflare 账号、KV、D1、Telegram Bot Token 等。
-- 主要环境变量：
-	- `TG_BOT_TOKEN`：Telegram Bot Token
-	- `TG_CHAT_ID`：Telegram 群组/用户ID
-	- `DOMAIN`：你的域名
-	- `DB`：Cloudflare D1 数据库绑定
-	- `IMAGE`：Cloudflare KV 绑定
-
-### 3. 本地开发
+### 1. 克隆项目
 
 ```bash
-npm run dev
+https://github.com/chengzhnag/moments-workers
 ```
 
-- 前端访问：http://localhost:5173
-- Worker API 本地访问：http://localhost:8787/api/...
-
-### 4. 构建与部署
-
-```bash
-npm run build
-npx wrangler deploy
-```
-
-## API 说明
-
-### 用户相关
-
-- `POST /api/auth` 用户登录（Basic Auth）
-- `GET /api/users` 用户列表（管理员）
-- `POST /api/users` 新增用户（管理员）
-- `PUT /api/users/:id` 更新用户（管理员）
-- `DELETE /api/users/:id` 删除用户（管理员）
-
-### 记录（posts）
-
-- `GET /api/records` 查询记录
-- `POST /api/records` 新增记录（管理员）
-- `PUT /api/records/:id` 更新记录（普通用户）
-- `DELETE /api/records/:id` 删除记录（管理员）
-
-### 文件上传
-
-- `POST /api/upload-file` 上传文件（支持图片/视频/音频）
-- `GET /api/file/:key` 下载文件
-- `GET /api/file-info/:key` 查询文件信息
-
-## 前端入口
-
-- 代码位于 `src/react-app/`
-- 路由、认证、API 请求已封装，支持移动端体验
-
-## 其他
-
-- 请确保 Cloudflare 账号已开通 D1 和 KV 服务
+![克隆项目](https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/image.7pnfzp7uf.webp)
 
 ---
 
-如需更详细的接口参数、数据结构或二次开发指引，请参考源码或联系作者。
+### 2. 创建cloudflareKV和D1数据库
+
+登录[cloudflare](https://dash.cloudflare.com/)新创建KV和D1数据库
+
+![](https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/image.32ibls7k2s.webp)
+![](https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/image.pfp4kud8j.webp)
+![](https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/image.1e8yolnt6b.webp)
+
+**创建出来之后kv和d1都有对应的ID**
+
+![](https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/image.8ok1znkvtr.webp)
+![](https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/image.45i0wog243.webp)
+
+---
+
+### 3. 进入D1数据库新增用户表和记录表
+
+```
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    account TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL,
+    name TEXT NOT NULL,
+    role TEXT NOT NULL DEFAULT 'normal',
+    created_at TEXT DEFAULT (datetime('now', 'localtime')),
+    updated_at TEXT DEFAULT (datetime('now', 'localtime')),
+    extra_data TEXT
+);
+```
+
+```
+CREATE TABLE records (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    creator_id INTEGER NOT NULL,
+    content_text TEXT,
+    content_media TEXT,
+    created_at TEXT DEFAULT (datetime('now', 'localtime')),
+    updated_at TEXT DEFAULT (datetime('now', 'localtime')),
+    extra_data TEXT,
+    FOREIGN KEY (creator_id) REFERENCES users(id)
+);
+```
+
+```
+INSERT INTO users (account, password, name, role, extra_data) VALUES ('admin', 'admin123', '系统管理员', 'admin', '{"avatar": "https://cdn.jsdelivr.net/gh/Zgrowth/image@master/141380129-(1).70afffymx2.webp", "phone": "13800138000"}');
+```
+
+**将上面三段代码分别执行**
+
+![](https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/image.8z6vssz5v9.webp)
+
+---
+
+### 4. 修改git仓库配置文件
+
+需要创建[Telegram Bot](https://chengzhnag.github.io/collect/2025-9-15-1757907416553.html)用于存储文件，需要科学上网
+
+其他配置可直接填入保存
+
+- 修改 `wrangler.json`，设置你的 Cloudflare KV、D1、Telegram Bot Token 等。
+- 主要环境变量：
+  - `TG_BOT_TOKEN`：Telegram Bot Token
+  - `TG_CHAT_ID`：Telegram 群组/用户ID
+  - `DOMAIN`：你的域名
+  - `DB`：Cloudflare D1 数据库绑定
+  - `IMAGE`：Cloudflare KV 绑定
+
+![](https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/image.2obvv5dowz.webp)
+
+---
+
+### 5. 在cloudflare新建workers
+
+![](https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/image.9o05d1x3wa.webp)
+![](https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/image.9ddbjwltd6.webp)
+
+**等待部署完成即可，后续改动git仓库都会触发自动部署**
+![](https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/image.7lkcp23fm5.webp)
+
+默认分配的域名需要科学上网才可以访问，[点击](https://moment.chengzhnag1.workers.dev)
+
+## 支持我
+
+如果你喜欢我的项目或工作，并希望通过捐赠来支持我，非常感谢您的慷慨！
+
+### 我的收款码
+![微信支付](https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/1000056304.2rvhsy1c5e.png)
+
+### 注意事项：
+
+- 请在确认金额无误后进行支付。
+- 捐赠时可以选择填写留言，告诉我你是谁或者对项目的建议和期待，这对我非常重要！
+- 如果遇到任何问题，请联系我。
+
+感谢您的支持与鼓励！
