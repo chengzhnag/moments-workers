@@ -7,9 +7,9 @@
     "nodejs_compat"
   ],
   "vars": {
-    "TG_BOT_TOKEN": "需要补充完整",
-    "TG_CHAT_ID": "需要补充完整",
-    "DOMAIN": "需要补充完整"
+    "TG_BOT_TOKEN": "需要补充完整，可参考（https://chengzhnag.github.io/collect/2025-9-15-1757907416553.html）",
+    "TG_CHAT_ID": "需要补充完整，可参考（https://chengzhnag.github.io/collect/2025-9-15-1757907416553.html）",
+    "DOMAIN": "自定义域名，需要补充完整"
   },
   "kv_namespaces": [
     {
