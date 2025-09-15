@@ -12,6 +12,21 @@ compatibility_flags = ["nodejs_compat"]
 [observability]
 enabled = true
 
+[[d1_databases]]
+binding = "DB"
+database_name = ""
+database_id = ""
+preview_database_id = ""
+
+[vars]
+TG_BOT_TOKEN = ""
+TG_CHAT_ID = ""
+DOMAIN = ""
+
+kv_namespaces = [
+  { binding = "IMAGE", id = "",preview_id=''}
+]
+
 # 静态资源托管配置
 [assets]
 directory = "./dist/client"
