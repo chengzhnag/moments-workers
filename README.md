@@ -123,7 +123,7 @@ INSERT INTO users (account, password, name, role, extra_data) VALUES ('admin', '
 如果你喜欢我的项目或工作，并希望通过捐赠来支持我，非常感谢您的慷慨！
 
 ### 我的收款码
-![微信支付](https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/1000056304.2rvhsy1c5e.png)
+<img src="https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/1000056304.2rvhsy1c5e.png" style="width: 160px;" />
 
 ### 注意事项：
 
