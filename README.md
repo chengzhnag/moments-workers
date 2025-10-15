@@ -116,7 +116,10 @@ INSERT INTO users (account, password, name, role, extra_data) VALUES ('admin', '
 **等待部署完成即可，后续改动git仓库都会触发自动部署**
 ![](https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/image.7lkcp23fm5.webp)
 
-默认分配的域名需要科学上网才可以访问，[点击](https://moment.chengzhnag1.workers.dev)
+默认分配的域名需要科学上网才可以访问，[点击查看](https://moment.chengzhnag1.workers.dev)
+
+初始账号：admin
+初始密码：admin123
 
 ## 支持我
 
