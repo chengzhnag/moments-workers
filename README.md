@@ -32,6 +32,7 @@
 ```bash
 https://github.com/chengzhnag/moments-workers
 ```
+⚡️⚡️⚡️不要fork，fork的项目是公开的，因为wrangler.json需要配置密钥，最好是私有的项目
 
 ![克隆项目](https://cdn.jsdelivr.net/gh/Zgrowth/image@master/document/image.7pnfzp7uf.webp)
 
